@@ -9,7 +9,7 @@ $(document).ready(function(){
 	var form = $("#save_form");
 
 	var formSent = function(response) {
-		$("#save_result_message").text("\"" + response.title + "\" saved!");
+		$("#save_result_message").html("¡<strong>" + response.title + "</strong> guardado!");
 	};
 
 	var sendFormByAjax = function(form) {
@@ -28,17 +28,20 @@ $(document).ready(function(){
 		sendFormByAjax($(this));
 	});
 });
+
+$(document).ready(function(){
+	var hash = window.location.hash;
+	var machine_friendly_name = hash.replace("#", "");
+	
+	$("#machine_friendly_name").val(machine_friendly_name);
+});
 </script>
-
 </head>
-
 <body>
-<form method="post" action="save.php" id="save_form">
-<label for="title">Título:</label><input type="text" id="title" name="title" />
-<label for="url">URL:</label><input type="text" id="url" name="url" />
-<input type="submit" value="Guardar" />
-</form>
-<div id="save_result_message"></div>
+	<form method="post" action="save.php" id="save_form">
+		<input type="hidden" name="machine_friendly_name" id="machine_friendly_name" />
+		<label for="title">Título:</label><input type="text" id="title" name="title" /> <label for="url">URL:</label><input type="text" id="url" name="url" /> <input type="submit" value="Guardar" />
+	</form>
+	<div id="save_result_message"></div>
 </body>
-
 </html>
