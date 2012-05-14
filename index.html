@@ -13,8 +13,7 @@
 		<div class="header prefix_1 suffix_1">
 			<a class="logo" title="Ir al inicio" href="#home">Read that shit.</a> <span class="slogan">The way you won't forget to read the shit you want.</span>
 		</div>
-		<div id="content" class="prefix_1 suffix_1 content clearfix">
-		</div>
+		<div id="content" class="prefix_1 suffix_1 content clearfix"></div>
 		<div id="pages" style="display: none;">
 			<div id="home">
 				<div class="grid_10">
@@ -22,7 +21,7 @@
 					<p>My money's in that office, right? If she start giving me some bullshit about it ain't there, and we got to go someplace else and get it, I'm gonna shoot you in the head then and there.</p>
 					<p>Then I'm gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. Hey, look at me when I'm talking to you, motherfucker.</p>
 					<p>You listen: we go in there, and that nigga Winston or anybody else is in there, you the first motherfucker to get shot. You understand?</p>
-					<a class="push_me_button" href="#create_list">¡Quiero tener una lista!</a>
+					<a class="push_me button" href="#create_list">¡Quiero tener una lista!</a>
 				</div>
 				<div class="prefix_1 grid_10">
 					<img alt="" src="http://placekitten.com/g/430/350" />
@@ -30,9 +29,10 @@
 			</div>
 			<div id="create_list">
 				<form method="post" action="create_list.php" id="save_form">
-					<label for="title">Nombre de tu lista:</label><input type="text" id="title" name="title" /> <label for="description">Escribe una descripción si te apetece:</label>
-					<textarea id="description" name="description"></textarea>
-					<input type="submit" value="Crear" />
+					<h2 class="title grid_10">¿Ahora qué?</h2>
+					<label for="title" class="form_label left grid_10 clear_left">Pónle un nombre a tu lista</label> <input type="text" id="title" name="title" class="form_input text_input grid_10 left clear_left" /> <label for="description" class="form_label left clear_left grid_10">Escribe una descripción si te apetece</label>
+					<textarea id="description" name="description" class="form_input text_input grid_10 left clear_left vertically_resizable"></textarea>
+					<input type="submit" value="Crear" class="button left clear_left" />
 				</form>
 				<div id="save_result_message"></div>
 			</div>
