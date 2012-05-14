@@ -1,9 +1,11 @@
 html {
 	background: url("images/html_background.png") #E8E1D5;
 	font-size: 15px;
+	font-family: serif;
 	box-shadow: 0 0 75px rgba(0, 0, 0, 0.50) inset;
 	height: 100%;
 	overflow: hidden;
+	color: #333;
 }
 
 body {
@@ -55,24 +57,76 @@ p {
 }
 
 .title {
-	s color: #53322B;
+	color: #53322B;
 	margin-bottom: 15px;
 	font-size: 30px;
 }
 
-.push_me_button {
+.form_label {
+	font-size: 16px;
+	font-weight: bold;
+	display: block;
+	margin-bottom: 5px;
+}
+
+.form_input {
+	font-size: 16px;
+	margin-bottom: 20px;
+	margin-left: 0;
+	display: block;
+}
+
+.text_input {
+	padding: 5px;
+}
+
+.button {	
+	font-family: serif;
+	font-size: 18px;
 	text-align: center;
-	padding: 10px;
+	padding: 5px;
 	text-decoration: none;
 	display: block;
 	color: #FFF;
 	background-color: #53322B;
+	border-radius: 5px;
+	box-shadow: 3px 3px 1px #BBBBBB;
+	border: none;
+	cursor: pointer;
+}
+
+.button:hover {
+	background-color: #7C4D43;
+	box-shadow: 2px 2px 1px #BBBBBB;
+	margin: 1px 0 0 1px;
+}
+
+.push_me.button {
+	padding: 10px;
+	display: block;
+	color: #FFF;
 	border-radius: 10px;
 	font-size: 25px;
-	box-shadow: 3px 3px 1px #BBBBBB;
 	margin: 20px 0;
 }
 
-.push_me_button:hover {
-	background-color: #7C4D43;
+.push_me.button:hover {	
+	margin-top: 21px;
+}
+
+/* TODO: helper.css */
+.left {
+	float: left !important;
+}
+
+.clear_left {
+	clear: left !important;
+}
+
+.clear_both {
+	clear: both !important;
+}
+
+.vertically_resizable {
+	resize: vertical;
 }
