@@ -1,18 +1,22 @@
 $(document).ready(function() {
-	var current_page_id_suffix = "_current";
+	var CURRENT_PAGE_ID_SUFFIX = "_current";
+
 	var content_element = $("#content");
 	var pages_element = $("#pages");
-	var current_page = $(content_element.children()[0]);
 
-	var navigateTo = function(content_id) {
-		var new_page = $("#" + content_id);
+	var current_page = null;
 
-		var page_not_exists = (new_page == null);
-		if (page_not_exists) {
+	var navigateTo = function(page_id) {
+
+		var page_id_is_valid = isValidPageId(page_id);
+
+		if (!page_id_is_valid) {
 			return;
 		}
-		
-		var page_is_being_showed = (current_page.attr("id") == (new_page.attr("id") + current_page_id_suffix);
+
+		var new_page = $("#" + page_id);
+
+		var page_is_being_showed = (current_page != null && current_page.attr("id") == (new_page.attr("id") + CURRENT_PAGE_ID_SUFFIX));
 		if (page_is_being_showed) {
 			return;
 		}
@@ -22,12 +26,14 @@ $(document).ready(function() {
 	};
 
 	var hideCurrentPage = function() {
-		hidePage(current_page);
+		if (current_page != null) {
+			hidePage(current_page);
+		}
 	};
 
 	var showPage = function(page) {
 		var id = page.attr("id");
-		var new_id = id + current_page_id_suffix;
+		var new_id = id + CURRENT_PAGE_ID_SUFFIX;
 		page.attr("id", new_id);
 
 		content_element.append(page);
@@ -36,16 +42,52 @@ $(document).ready(function() {
 
 	var hidePage = function(page) {
 		var id = page.attr("id");
-		var new_id = id.replace(current_page_id_suffix, "");
+		var new_id = id.replace(CURRENT_PAGE_ID_SUFFIX, "");
 		page.attr("id", new_id);
 
 		pages_element.append(page);
 	};
 
-	$(window).bind('hashchange', function(event) {
-		var hash_value = window.location.hash.replace("#", "");
-		navigateTo(hash_value);
-	});
+	var getDefaultPageId = function() {
+		var default_page = $(pages_element.children()[0]);
+		return default_page.attr("id");
+	};
 
-	showPage(current_page);
+	var isValidPageId = function(page_id) {
+		var page = $("#" + page_id);
+
+		var page_id_is_valid = (page.length > 0);
+
+		return page_id_is_valid;
+	};
+
+	var navigateToDefault = function() {
+
+		var default_page_id = getDefaultPageId();
+		navigateTo(default_page_id);
+	};
+
+	var startNavigation = function() {
+		var current_hash_value = getCurrentHashValue();
+		var hash_is_a_valid_page_id = isValidPageId(current_hash_value);
+		if (hash_is_a_valid_page_id) {
+			navigateTo(current_hash_value);
+			return;
+		}
+
+		navigateToDefault();
+	};
+
+	var getCurrentHashValue = function() {
+		return window.location.hash.replace("#", "");
+	};
+
+	var changeToPageInHash = function() {
+		var hash_value = getCurrentHashValue();
+		navigateTo(hash_value);
+	};
+
+	$(window).bind('hashchange', changeToPageInHash);
+
+	startNavigation();
 });
