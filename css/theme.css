@@ -1,6 +1,13 @@
-body {
-	background-color: #E8E1D5;
+html {
+	background: url("images/html_background.png") #E8E1D5;
 	font-size: 15px;
+	box-shadow: 0 0 75px rgba(0, 0, 0, 0.50) inset;
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	overflow: auto;
 }
 
 p {
@@ -45,7 +52,6 @@ p {
 
 .content {
 	margin-top: 50px;
-	margin-bottom: 100px;
 }
 
 .title {
