@@ -13,8 +13,6 @@ $(document).ready(function() {
 			return;
 		}
 		
-		clearErrorList();
-		
 		$(response.errors).each(function() {
 			var error_text = LABELS[this];
 			var list_item = $("<li>", { "class": "item", "html": error_text } );
