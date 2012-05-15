@@ -113,20 +113,3 @@ p {
 .push_me.button:hover {	
 	margin-top: 21px;
 }
-
-/* TODO: helper.css */
-.left {
-	float: left !important;
-}
-
-.clear_left {
-	clear: left !important;
-}
-
-.clear_both {
-	clear: both !important;
-}
-
-.vertically_resizable {
-	resize: vertical;
-}
