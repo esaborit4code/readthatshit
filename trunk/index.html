@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Read That Shit</title>
+<script type="text/javascript" src="js/labels.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/navigation.js"></script>
 <script type="text/javascript" src="js/creation.js"></script>
@@ -29,13 +30,14 @@
 				</div>
 			</div>
 			<div id="create_list">
-				<form method="post" action="create_list.php" id="save_form">
-					<h2 class="title grid_10">¿Ahora qué?</h2>
+				<h2 class="title grid_24">¿Ahora qué?</h2>
+				<form method="post" action="create_list.php" id="save_form" class="left">
 					<label for="title" class="form_label left grid_10 clear_left">Pónle un nombre a tu lista</label> <input type="text" id="title" name="title" class="form_input text_input grid_10 left clear_left" /> <label for="description" class="form_label left clear_left grid_10">Escribe una descripción si te apetece</label>
 					<textarea id="description" name="description" class="form_input text_input grid_10 left clear_left vertically_resizable"></textarea>
 					<input type="submit" value="Crear" class="button left clear_left" />
 				</form>
-				<ul id="error_list"></ul>
+				<ul id="error_list" class="error_list grid_10 push_2">
+				</ul>
 			</div>
 		</div>
 	</div>
