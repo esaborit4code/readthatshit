@@ -113,3 +113,18 @@ p {
 .push_me.button:hover {	
 	margin-top: 21px;
 }
+
+.error_list {
+	display: none;
+	background-color: #F74747;
+	border: 3px dashed #FF9595;
+	color: #FFFFFF;
+	margin-top: 26px;
+}
+
+.error_list .item {
+	margin: 15px 15px 15px 35px;
+	list-style: disc;
+	display: list-item;
+	line-height: 22px;
+}
