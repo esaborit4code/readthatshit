@@ -1,15 +1,19 @@
 $(document).ready(function() {
 	var form = $("#save_form");
+	var error_list = $("#error_list");
 
+	var clearErrorList = function() {		
+		error_list.empty();
+		error_list.hide();
+	};
+	
 	var formSent = function(response) {
 		var has_errors = ((response.errors != null) && (response.errors.length > 0));
-		if(!has_errors) {
+		if(!has_errors) {			
 			return;
 		}
 		
-		var error_list = $("#error_list");
-		error_list.empty();
-		error_list.hide();
+		clearErrorList();
 		
 		$(response.errors).each(function() {
 			var error_text = LABELS[this];
@@ -29,6 +33,8 @@ $(document).ready(function() {
 			type: "post",
 			dataType: "json"
 		}).success(formSent);
+		
+		clearErrorList();
 	};
 
 	form.submit(function(event) {
