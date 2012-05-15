@@ -14,7 +14,6 @@ function get_machine_friendly_name($title) {
 	$regex_replacement = array('', '-', '');
 
 	$machine_friendly_name = strtolower(trim($machine_friendly_name));
-	$machine_friendly_name = html_entity_decode($machine_friendly_name, ENT_QUOTES, 'UTF8');
 	$machine_friendly_name = str_replace($special_characters, $common_characters, $machine_friendly_name);
 	$machine_friendly_name = str_replace ($spacing_characters, '-', $machine_friendly_name);
 	$machine_friendly_name = preg_replace ($some_other_regex_to_replace, $regex_replacement, $machine_friendly_name);
