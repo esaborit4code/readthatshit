@@ -74,6 +74,7 @@ p {
 	margin-bottom: 20px;
 	margin-left: 0;
 	display: block;
+	border-radius: 3px;
 }
 
 .text_input {
@@ -120,6 +121,7 @@ p {
 	border: 3px dashed #FF9595;
 	color: #FFFFFF;
 	margin-top: 26px;
+	border-radius: 3px;
 }
 
 .error_list .item {
