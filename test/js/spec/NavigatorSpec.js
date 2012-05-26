@@ -26,7 +26,7 @@ describe("Navigator", function() {
     
     expect(function() {        
         navigator.setDisplay(anything);
-    }).toThrow(Navigator.INVALID_ELEMENT_ERROR);
+    }).toThrow(Html.INVALID_ELEMENT_ERROR);
   });
     
   it("should navigate to a view giving a view", function() {
@@ -43,7 +43,7 @@ describe("Navigator", function() {
     
     expect(function() {        
         navigator.navigateTo(anything);
-    }).toThrow(Navigator.INVALID_ELEMENT_ERROR);
+    }).toThrow(Html.INVALID_ELEMENT_ERROR);
   });
    
   it("should append the view to navigate when navigate to", function() {
