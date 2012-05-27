@@ -63,7 +63,8 @@ ListCreationView.prototype.initializeSaveButton = function() {
 };
 
 ListCreationView.prototype.onSaveButtonClick = function(click_event) {
-    var event = new Events.ButtonClick(this.save_button);
+    var data = this.getData();
+    var event = new Events.ButtonClick(this.save_button, data);
     
     Bus.broadcast(event);
 };
