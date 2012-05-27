@@ -1,3 +1,3 @@
 var Config = {
-        HtmlTemplatesPath: "/readthatshit/html"
+        HTML_TEMPLATES_PATH: "/readthatshit/html"
 };

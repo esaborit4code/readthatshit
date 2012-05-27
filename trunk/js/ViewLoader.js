@@ -26,7 +26,7 @@ ViewLoader.getTemplateHtml = function (template_file) {
     var wrapper = { template_html: null };
     
     $.ajax({
-        url: Config.HtmlTemplatesPath + "/" + template_file,
+        url: Config.HTML_TEMPLATES_PATH + "/" + template_file,
         async: false,
         success: ViewLoader.onTemplateFileLoaded.bind(wrapper),
         error: ViewLoader.onTemplateFileError
