@@ -113,4 +113,25 @@ describe("ListCreationView", function() {
         
         expect(data).toEqual(expected_data);
     });
+    
+    it("should send an event with its data on it when clicking on save button", function() {
+        var any_title = "any title";
+        var any_description = "any description";
+        
+        the_view.form.title.value = any_title;
+        the_view.form.description.value = any_description;
+        
+        var broadcasted_event = null;
+        Bus.broadcast = function(event) {
+            broadcasted_event = event;  
+        };
+        
+        var expected_data = { "title": any_title, "description": any_description };
+        
+        the_view.save_button.click();
+        
+        expect(broadcasted_event instanceof Events.ButtonClick).toBeTruthy();
+        expect(broadcasted_event.button).toEqual(the_view.save_button);
+        expect(broadcasted_event.data).toEqual(expected_data);
+    });
 });
