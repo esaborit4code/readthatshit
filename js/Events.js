@@ -4,3 +4,11 @@ Events.ButtonClick = function(button, data) {
     this.button = button;
     this.data = data;
 };
+
+Events.ListCreated = function(data) {
+    this.data = data;
+};
+
+Events.ListCreationFailed = function(errors) {
+    this.errors = errors;
+};
