@@ -19,7 +19,7 @@ describe("ViewLoader", function() {
         
         var element = ViewLoader.getElementFromTemplateFile(template_file);
 
-        var template_full_path = Config.HtmlTemplatesPath + "/" + template_file;
+        var template_full_path = Config.HTML_TEMPLATES_PATH + "/" + template_file;
         expect(ajax_params_passed.url).toEqual(template_full_path);
         expect(element.innerHTML).toEqual(dummy_text);
     });
