@@ -110,6 +110,7 @@ p {
 	box-shadow: 3px 3px 1px #BBBBBB;
 	border: 3px double #FFF;
 	cursor: pointer;
+	margin: 0 5px;
 }
 
 .button.right {
@@ -119,7 +120,7 @@ p {
 .button:hover {
 	background-color: #7C4D43;
 	box-shadow: 2px 2px 1px #BBBBBB;
-	margin: 1px 0 0 1px;
+	margin: 1px 0 0 6px;
 }
 
 .button.right:hover {
@@ -137,8 +138,7 @@ p {
 }
 
 .push_me.button:hover {	
-	margin: 21px 0 0 1px;
-	box-shadow: 3px 2px 1px #BBBBBB;
+	margin: 21px -1px 0 1px;
 }
 
 .error_list {
