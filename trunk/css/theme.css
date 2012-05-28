@@ -53,53 +53,72 @@ p {
 }
 
 .content {
-	margin-top: 50px;
+	padding: 50px 0;
 }
 
 .title {
 	color: #53322B;
 	margin-bottom: 15px;
-	font-size: 30px;
+	font-size: 27px;
 }
 
 .form_label {
 	font-size: 16px;
 	font-weight: bold;
 	display: block;
-	margin-bottom: 5px;
+	margin-bottom: 7px;
 }
 
 .form_input {
 	font-size: 16px;
 	margin-bottom: 20px;
-	margin-left: 0;
 	display: block;
-	border-radius: 3px;
+	border-radius: 2px;
 }
 
 .text_input {
-	padding: 5px;
+	padding: 7px;
+	border: solid 1px #53322B;
+	font-family: Courier, Courier New, monospace;
+	color: #333;
+}
+
+.text_input:focus {
+	border: solid 2px #7C4D43;
+	padding: 6px;
+}
+
+.text_input.grid_10 {
+	width: 372px;
 }
 
 .button {	
 	font-family: serif;
 	font-size: 18px;
 	text-align: center;
-	padding: 5px;
+	padding: 6px 12px;
 	text-decoration: none;
 	display: block;
 	color: #FFF;
 	background-color: #53322B;
-	border-radius: 5px;
+	border-radius: 7px;
 	box-shadow: 3px 3px 1px #BBBBBB;
-	border: none;
+	border: 3px double #FFF;
 	cursor: pointer;
+}
+
+.button.right {
+	margin-right: 6px;
 }
 
 .button:hover {
 	background-color: #7C4D43;
 	box-shadow: 2px 2px 1px #BBBBBB;
 	margin: 1px 0 0 1px;
+}
+
+.button.right:hover {
+	margin-right: 5px;
 }
 
 .push_me.button {
@@ -109,10 +128,12 @@ p {
 	border-radius: 10px;
 	font-size: 25px;
 	margin: 20px 0;
+	border-width: 6px;
 }
 
 .push_me.button:hover {	
-	margin-top: 21px;
+	margin: 21px 0 0 1px;
+	box-shadow: 3px 2px 1px #BBBBBB;
 }
 
 .error_list {
