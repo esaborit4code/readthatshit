@@ -1,7 +1,7 @@
 html {
 	background: url("images/html_background.png") #E8E1D5;
 	font-size: 15px;
-	font-family: serif;
+	font-family: Georgia, serif;
 	box-shadow: 0 0 75px rgba(0, 0, 0, 0.50) inset;
 	height: 100%;
 	overflow: hidden;
@@ -76,6 +76,10 @@ p {
 	border-radius: 2px;
 }
 
+.form_input:focus {
+	outline: none;
+}
+
 .text_input {
 	padding: 7px;
 	border: solid 1px #53322B;
@@ -93,8 +97,9 @@ p {
 }
 
 .button {	
-	font-family: serif;
+	font-family: Georgia, serif;
 	font-size: 18px;
+	font-weight: bold;
 	text-align: center;
 	padding: 6px 12px;
 	text-decoration: none;
