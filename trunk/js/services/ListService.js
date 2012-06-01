@@ -3,7 +3,8 @@ var ListService = function() {};
 ListService.LIST_NAME_ALREADY_USED = "LIST NAME ALREADY USED";
 
 ListService.urls = {
-    create: Config.SERVICES_BASE_PATH + "/list/create"
+    create: Config.SERVICES_BASE_PATH + "/list/create",
+    get: Config.SERVICES_BASE_PATH + "/list/get"
 };
 
 ListService.createList = function (list_data) {
@@ -23,5 +24,23 @@ ListService.onCreateListResponse = function(response) {
     }
     
     var event = new Events.ListCreated(response);
+    Bus.broadcast(event);
+};
+
+ListService.getList = function(machine_name) {
+    $.ajax({
+        url: ListService.urls.get + "/" + machine_name,
+        success: ListService.onGetListResponse,
+        error: ListService.onGetListFailed
+    });
+};
+
+ListService.onGetListResponse = function(response) {
+    var event = new Events.GotList(response);
+    Bus.broadcast(event);
+};
+
+ListService.onGetListFailed = function() {
+    var event = new Events.GetListFailed();
     Bus.broadcast(event);
 };
