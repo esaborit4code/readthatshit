@@ -79,4 +79,51 @@ describe("ListService", function() {
         expect(broadcasted_event instanceof Events.ListCreationFailed).toBeTruthy();
         expect(broadcasted_event.errors).toEqual(server_response.errors);
     });
+    
+    xit("should throw an event when failed at creating a list");
+    
+    it("should get a list by its machine name", function() {
+        var the_machine_name = "the-machine-name";
+        
+        var received_params = null;
+        $.ajax = function(params) {
+            received_params = params;
+        }
+        
+        ListService.getList(the_machine_name);
+        
+        expect(received_params.url).toEqual(ListService.urls.get + "/" + the_machine_name);
+    });
+    
+    it("should throw an event when list is loaded", function() {
+        var server_response = "any successful response";
+        $.ajax = function(params) {
+            params.success(server_response);
+        };
+        
+        var broadcasted_event = null;
+        Bus.broadcast = function(event) {
+            broadcasted_event = event;  
+        };
+        
+        ListService.getList();
+        
+        expect(broadcasted_event instanceof Events.GotList).toBeTruthy();
+        expect(broadcasted_event.data).toEqual(server_response);
+    });
+    
+    it("should throw an event when failed at getting a list", function() {
+        $.ajax = function(params) {
+            params.error();
+        };
+        
+        var broadcasted_event = null;
+        Bus.broadcast = function(event) {
+            broadcasted_event = event;  
+        };
+        
+        ListService.getList();
+        
+        expect(broadcasted_event instanceof Events.GetListFailed).toBeTruthy();
+    });
 });

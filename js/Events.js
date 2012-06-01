@@ -12,3 +12,9 @@ Events.ListCreated = function(data) {
 Events.ListCreationFailed = function(errors) {
     this.errors = errors;
 };
+
+Events.GotList = function(data) {
+    this.data = data;
+};
+
+Events.GetListFailed = function() {};
