@@ -1,10 +1,11 @@
 var ListService = function() {};
 
 ListService.LIST_NAME_ALREADY_USED = "LIST NAME ALREADY USED";
+ListService.LIST_DOES_NOT_EXIST = "LIST DOES NOT EXIST";
 
 ListService.urls = {
     create: Config.SERVICES_BASE_PATH + "/list/create",
-    get: Config.SERVICES_BASE_PATH + "/list/get"
+    add_entry: Config.SERVICES_BASE_PATH + "/list/add-entry"
 };
 
 ListService.createList = function (list_data) {
@@ -27,20 +28,23 @@ ListService.onCreateListResponse = function(response) {
     Bus.broadcast(event);
 };
 
-ListService.getList = function(machine_name) {
+ListService.addEntry = function(list_machine_name, entry_data) {
+    var data = {list: list_machine_name, entry: entry_data};
     $.ajax({
-        url: ListService.urls.get + "/" + machine_name,
-        success: ListService.onGetListResponse,
-        error: ListService.onGetListFailed
+        url: ListService.urls.add_entry,
+        data: data,
+        success: ListService.onAddEntryResponse
     });
 };
 
-ListService.onGetListResponse = function(response) {
-    var event = new Events.GotList(response);
-    Bus.broadcast(event);
-};
-
-ListService.onGetListFailed = function() {
-    var event = new Events.GetListFailed();
+ListService.onAddEntryResponse = function(response) {
+    var response_has_errors = (response.errors != null && response.errors[0] != null);
+    if(response_has_errors) {
+        var event = new Events.EntryAdditionFailed(response.errors);
+        Bus.broadcast(event);
+        return;
+    }
+    
+    var event = new Events.EntryAdded(response);
     Bus.broadcast(event);
 };

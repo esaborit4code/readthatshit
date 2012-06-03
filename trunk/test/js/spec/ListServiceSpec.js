@@ -80,22 +80,24 @@ describe("ListService", function() {
         expect(broadcasted_event.errors).toEqual(server_response.errors);
     });
     
-    xit("should throw an event when failed at creating a list");
-    
-    it("should get a list by its machine name", function() {
-        var the_machine_name = "the-machine-name";
+    it("should post via ajax the data of a new entry to the specific url", function() {
+        var the_list_machine_name = "any-list";
+        var the_entry_data = {title: "any title", description: "any description", url: "any url"};
         
+        var expected_params = {list: the_list_machine_name, entry: the_entry_data};
         var received_params = null;
         $.ajax = function(params) {
             received_params = params;
-        }
+        };
         
-        ListService.getList(the_machine_name);
+        ListService.addEntry(the_list_machine_name, the_entry_data);
         
-        expect(received_params.url).toEqual(ListService.urls.get + "/" + the_machine_name);
+        expect(received_params.data.entry).toEqual(the_entry_data);
+        expect(received_params.data.list).toEqual(the_list_machine_name);
+        expect(received_params.url).toEqual(ListService.urls.add_entry);
     });
     
-    it("should throw an event when list is loaded", function() {
+    it("should send an event with the server response when entry is added", function() {
         var server_response = "any successful response";
         $.ajax = function(params) {
             params.success(server_response);
@@ -106,15 +108,16 @@ describe("ListService", function() {
             broadcasted_event = event;  
         };
         
-        ListService.getList();
+        ListService.addEntry();
         
-        expect(broadcasted_event instanceof Events.GotList).toBeTruthy();
         expect(broadcasted_event.data).toEqual(server_response);
+        expect(broadcasted_event instanceof Events.EntryAdded).toBeTruthy();
     });
     
-    it("should throw an event when failed at getting a list", function() {
+    it("should send an event when the list where entry is added does not exist", function() {
+        var server_response = { errors: [ ListService.LIST_DOES_NOT_EXIST ] };
         $.ajax = function(params) {
-            params.error();
+            params.success(server_response);
         };
         
         var broadcasted_event = null;
@@ -122,8 +125,9 @@ describe("ListService", function() {
             broadcasted_event = event;  
         };
         
-        ListService.getList();
+        ListService.addEntry();
         
-        expect(broadcasted_event instanceof Events.GetListFailed).toBeTruthy();
+        expect(broadcasted_event.errors).toEqual(server_response.errors);
+        expect(broadcasted_event instanceof Events.EntryAdditionFailed).toBeTruthy();
     });
 });
