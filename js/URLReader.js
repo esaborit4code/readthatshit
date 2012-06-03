@@ -1,7 +1,9 @@
 function URLReader() { };
 
+URLReader.HASH_CHARACTER = "#";
+
 URLReader.getParameters = function(url, section_separator, parameter_separator) {
-    var hash = URLReader.getHash(url, section_separator);
+    var hash = URLReader.getParameterSection(url, section_separator);
     
     var there_are_parameters = (hash != "");
     if(!there_are_parameters) {
@@ -13,7 +15,7 @@ URLReader.getParameters = function(url, section_separator, parameter_separator) 
     return parameters;
 };
 
-URLReader.getHash = function (url, section_separator) {
+URLReader.getParameterSection = function (url, section_separator) {
     var url_has_section_separator = (url.indexOf(section_separator) > -1);
     if(!url_has_section_separator) {
         return "";
@@ -24,3 +26,7 @@ URLReader.getHash = function (url, section_separator) {
     
     return parameter_section;
 };
+
+URLReader.getHash = function(url) {
+    return URLReader.getParameterSection(url, URLReader.HASH_CHARACTER);
+}
