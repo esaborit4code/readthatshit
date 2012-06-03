@@ -1,16 +1,20 @@
 function URLReader() { };
 
 URLReader.HASH_CHARACTER = "#";
+URLReader.SLASH_CHARACTER = "/";
 
 URLReader.getParameters = function(url, section_separator, parameter_separator) {
-    var hash = URLReader.getParameterSection(url, section_separator);
+    section_separator = (section_separator == null) ? URLReader.HASH_CHARACTER : section_separator;
+    parameter_separator = (parameter_separator == null) ? URLReader.SLASH_CHARACTER : parameter_separator;
     
-    var there_are_parameters = (hash != "");
+    var parameter_section = URLReader.getParameterSection(url, section_separator);
+    
+    var there_are_parameters = (parameter_section != "");
     if(!there_are_parameters) {
         return [];
     }
     
-    var parameters = hash.split(parameter_separator);
+    var parameters = parameter_section.split(parameter_separator);
     
     return parameters;
 };
