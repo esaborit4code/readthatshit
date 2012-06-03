@@ -13,6 +13,16 @@ describe("URLReader", function() {
     expect(the_parameters[1]).toEqual(second_parameter);
   });
   
+  it("should return the parameters after the hash sepparated by a slash when passing only an url (no sepparator characters passed)", function() {
+    var first_parameter = "first";
+    var second_parameter = "second";
+    var the_url = "example#" + first_parameter + "/" + second_parameter;
+    
+    var the_parameters = URLReader.getParameters(the_url);
+    expect(the_parameters[0]).toEqual(first_parameter);
+    expect(the_parameters[1]).toEqual(second_parameter);  
+  });
+  
   it("should return the hash section of an url", function() {
     var url_parameters = "first/second";
     var the_url = "example#" + url_parameters;
