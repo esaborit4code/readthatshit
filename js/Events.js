@@ -13,8 +13,10 @@ Events.ListCreationFailed = function(errors) {
     this.errors = errors;
 };
 
-Events.GotList = function(data) {
+Events.EntryAdded = function(data) {
     this.data = data;
 };
 
-Events.GetListFailed = function() {};
+Events.EntryAdditionFailed = function(errors) {
+    this.errors = errors;
+};
