@@ -13,12 +13,12 @@ describe("URLReader", function() {
     expect(the_parameters[1]).toEqual(second_parameter);
   });
   
-  it("should return the parameters after the section separator using a determined char to sepparate parameters as a string", function() {
-    var parameters = "first/second";
-    var the_url = "example#" + parameters;
+  it("should return the hash section of an url", function() {
+    var url_parameters = "first/second";
+    var the_url = "example#" + url_parameters;
     
-    var hash = URLReader.getHash(the_url, section_separator);
-    expect(hash).toEqual(parameters);
+    var hash = URLReader.getHash(the_url);
+    expect(hash).toEqual(url_parameters);
   });
   
   it("should return an empty array if url has no parameter separator", function () {
